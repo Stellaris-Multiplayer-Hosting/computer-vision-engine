@@ -6,38 +6,46 @@ from time import sleep
 import keyboard
 import random
 import subprocess
+import steamworks as sw
+import pydirectinput as pyt
 
-#Opens Stellaris.... Siper spend two hours trying to figure this out with cv2 but you can just go to the dir and open it this way... much easier...
 
-subprocess.Popen("C:\Program Files (x86)\Steam\steamapps\common\Stellaris\stellaris.exe")
+def setting_up_lobby():  
+    #testingstuff
+    #goes to mp.
+    print("M was pressed")
+    pyt.press("m")
+    sleep(1)
+    #Goes to host.
+    print("N was pressed")
+    pyt.press("n")
+    sleep(1)
+    #Opens the lobby.
+    print("Enter was pressed")
+    pyt.press("enter")
+    sleep(3)
+    pyt.leftClick(1450, 850)
 
-## waits for the loadingscreen.
-
-ready = input("Ready Siper?: ")
-print("Here we go...")
 
 def wait_for_loadingscreen():
     print("this function is running you just did something right.")
     position = pt.locateCenterOnScreen("assets\stellaris_main_menu.png", confidence=.80)
 
-wait_for_loadingscreen()
 
-    
-def setting_up_lobby():   
-    #goes to mp.
-    print("M was pressed")
-    pt.press("m")
-    sleep(5)
-    #Goes to host.
-    print("N was pressed")
-    pt.press("n")
-    sleep(5)
-    #Opens the lobby.
-    print("Enter was pressed")
-    pt.press("enter")
-    sleep(5)
+def main():
+    # use the steamworks library to open the game
+    steam = sw.STEAMWORKS()
+    steam.initialize()
+    subprocess.Popen(f'{steam.Apps.GetAppInstallDir(281990)}/stellaris.exe')
 
-sleep(5)
+    ## waits for the loadingscreen.
 
-setting_up_lobby()
+    ready = input("Ready Siper?: ")
+    print("Here we go...")
+    sleep(3)
+    wait_for_loadingscreen()
+    setting_up_lobby()
 
+
+if __name__ == '__main__':
+    main()
