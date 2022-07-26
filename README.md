@@ -4,4 +4,7 @@ This is the computer vision section of the project, that is meant to interface w
 # Setup
 Install the [SteamworksPY](https://github.com/philippj/SteamworksPy) library. Setup for this library is not as easy as most other, and it involves a few steps:
   - cd into the directory, with the terminal in admin mode, and run: `python setup.py build` and then run: `python setup.py install`
-  - clone this repo, and then you can run the `/src/main.py` file.
+  - clone this repo, and cd into it,
+  - install requirements: `pip install requirements.txt`
+  
+You can run the `/src/main.py` file.
