@@ -23,14 +23,6 @@ def setting_up_lobby():
     #Opens the lobby.
     print("Enter was pressed")
     pyt.press("enter")
-    sleep(3)
-    pyt.leftClick(1450, 850)
-
-
-def wait_for_loadingscreen():
-    print("this function is running you just did something right.")
-    position = pt.locateCenterOnScreen("assets\stellaris_main_menu.png", confidence=.80)
-
 
 def main():
     # use the steamworks library to open the game
@@ -38,12 +30,18 @@ def main():
     steam.initialize()
     subprocess.Popen(f'{steam.Apps.GetAppInstallDir(281990)}/stellaris.exe')
 
-    ## waits for the loadingscreen.
 
-    ready = input("Ready Siper?: ")
+##Looks for the image main_menu and loops until it is found.
+    while 1:
+        if pt.locateOnScreen("assets\stellaris_main_menu.png", confidence=.80) != None:
+            print("Let's get this show on the road.")
+            break
+        else:
+            print("I cannot locate stellaris main screen make sure to click on the application as well please wait 20 seconds.")
+            sleep(20)
+
     print("Here we go...")
     sleep(3)
-    wait_for_loadingscreen()
     setting_up_lobby()
 
 
