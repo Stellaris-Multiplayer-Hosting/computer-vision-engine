@@ -10,7 +10,7 @@ import steamworks as sw
 import pydirectinput as pyt
 
 
-def setting_up_lobby():  
+def setting_up_lobby():
     #testingstuff
     #goes to mp.
     print("M was pressed")
@@ -32,13 +32,12 @@ def main():
 
 
 ##Looks for the image main_menu and loops until it is found.
-    while 1:
+    while True:
         if pt.locateOnScreen("assets\stellaris_main_menu.png", confidence=.80) != None:
             print("Let's get this show on the road.")
             break
-        else:
-            print("I cannot locate stellaris main screen make sure to click on the application as well please wait 20 seconds.")
-            sleep(20)
+        print("I cannot locate stellaris main screen make sure to click on the application as well please wait 20 seconds.")
+        sleep(20)
 
     print("Here we go...")
     sleep(3)
