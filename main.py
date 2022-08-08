@@ -23,7 +23,7 @@ cv.imshow('Result', wafflefries)
 sleep(5000)
 
 
-def setting_up_lobby():  
+def setting_up_lobby():
     #testingstuff
     #goes to mp.
     print("M was pressed")
@@ -53,13 +53,18 @@ def main():
     subprocess.Popen(f'{steam.Apps.GetAppInstallDir(281990)}/stellaris.exe')
 
 ##Looks for the image main_menu and loops until it is found.
-    while 1:
+    while True:
         if pt.locateOnScreen("assets\stellaris_main_menu.png", confidence=.80) != None:
             print("Let's get this show on the road.")
             break
+
         else:
             print("I cannot locate stellaris main screen make sure to click on the application as well please wait 10 seconds.")
             sleep(10)
+
+        print("I cannot locate stellaris main screen make sure to click on the application as well please wait 20 seconds.")
+        sleep(20)
+
 
     sleep(3)
     setting_up_lobby()
