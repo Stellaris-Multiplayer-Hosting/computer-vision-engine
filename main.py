@@ -1,6 +1,7 @@
 from tkinter import *
 import cv2 as cv
 from cv2 import ml_NormalBayesClassifier
+from cv2 import threshold
 import pyautogui as pt
 from time import sleep
 import keyboard
@@ -8,6 +9,18 @@ import random
 import subprocess
 import steamworks as sw
 import pydirectinput as pyt
+import pytesseract as pts
+
+playersf_img = cv.imread("assets\westingstuff.png", cv.IMREAD_UNCHANGED)
+players_img = cv.imread("assets\players.png", cv.IMREAD_UNCHANGED)
+
+wafflefries = cv.matchTemplate(playersf_img, players_img, cv.TM_CCOEFF_NORMED)
+
+cv.imshow('Result', wafflefries)
+
+
+
+sleep(5000)
 
 
 def setting_up_lobby():  
@@ -24,12 +37,20 @@ def setting_up_lobby():
     print("Enter was pressed")
     pyt.press("enter")
 
+#def bot_messages():
+ #   pyt.click(700, 815)
+  #  pyt.typewrite("Hello and welcome to the game.")
+
+def detect_players():
+    #detects how many players are in the game 
+    pts.image_to_boxes
+    print("")
+
 def main():
     # use the steamworks library to open the game
     steam = sw.STEAMWORKS()
     steam.initialize()
     subprocess.Popen(f'{steam.Apps.GetAppInstallDir(281990)}/stellaris.exe')
-
 
 ##Looks for the image main_menu and loops until it is found.
     while 1:
@@ -37,12 +58,13 @@ def main():
             print("Let's get this show on the road.")
             break
         else:
-            print("I cannot locate stellaris main screen make sure to click on the application as well please wait 20 seconds.")
-            sleep(20)
+            print("I cannot locate stellaris main screen make sure to click on the application as well please wait 10 seconds.")
+            sleep(10)
 
-    print("Here we go...")
     sleep(3)
     setting_up_lobby()
+    sleep(2)
+#    bot_messages()
 
 
 if __name__ == '__main__':
